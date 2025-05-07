@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multifases</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      caret-color: transparent;
+      font-family: 'Syne', sans-serif;
+      color: #F2F2F2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #000;
+      overflow: hidden;
+    }
+    .particles-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://assets.codepen.io/1538474/starfield.gif') no-repeat center center;
+      background-size: cover;
+      opacity: 0.1;
+    }
+    audio { display: none; }
+    header, footer {
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    header h1:hover {
+      color: #C18AFF;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      flex: 1;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .menu {
+      padding: 3rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+    .display-area {
+      padding: 3rem 2rem;
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .fase-titulo {
+      font-size: 1.5rem;
+      color: #A695FF;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
+      position: relative;
+    }
+    .fase-titulo:hover {
+      color: #C18AFF;
+      transform: translateX(4px);
+    }
+    .fase-titulo.activa {
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 1.7rem;
+      animation: glow 1.5s ease-in-out infinite alternate;
+      text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ffffff40, 0 0 10px #C18AFF20; }
+      to   { text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .descripcion, .contenido {
+      display: none;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      opacity: 0;
+    }
+
+    .descripcion.visible {
+      display: block;
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+
+    .contenido.visible {
+      display: block;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    #intro {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto;
+      padding-top: 2rem;
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    #intro.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    .contenido {
+      padding-left: 1rem;
+      border-left: 2px solid rgba(255,255,255,0.1);
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="particles-bg"></div>
+  <audio autoplay loop>
+    <source src="https://file-examples.com/storage/fe98002bfc2a02db3053e2d/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  <header>
+    <h1 onclick="mostrarFase(0)">Multifases</h1>
+    <p id="intro-text" class="visible">Una narrativa identitaria en transformación constante</p>
+  </header>
+
+  <div class="main-content">
+    <div class="menu">
+      <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: El Disfraz</div>
+      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: El Movimiento</div>
+      <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: La Banda Sonora</div>
+      <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: La Síntesis</div>
+      <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: Lo Íntimo</div>
+    </div>
+
+    <div class="display-area">
+      <div id="intro" class="descripcion visible">
+        <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrativo y expresivo de cada etapa del proyecto.</p>
+      </div>
+
+      <div id="desc1" class="descripcion"><p>La imagen proyectada al mundo. Aquí comienza la metamorfosis visual de Multifases.</p></div>
+      <div id="desc2" class="descripcion"><p>Contenido y presencia. Lo que se muestra, lo que vibra, lo que comunica.</p></div>
+      <div id="desc3" class="descripcion"><p>Diseño sonoro, emociones en frecuencia, música como identidad latente.</p></div>
+      <div id="desc4" class="descripcion"><p>La dimensión audiovisual donde todas las anteriores convergen: cine, visuales, loops y narrativa expandida.</p></div>
+      <div id="desc5" class="descripcion"><p>Un espacio experimental, vulnerable, sin filtros ni forma definida. El laboratorio interior de Multifases.</p></div>
+
+      <div id="cont1" class="contenido"><p>Aquí podrías mostrar ejemplos visuales del diseño de identidad, moodboards, máscaras o conceptos gráficos.</p></div>
+      <div id="cont2" class="contenido"><p>Podrías incorporar clips de performance, interacciones en redes, o piezas animadas.</p></div>
+      <div id="cont3" class="contenido"><p>Fragmentos de canciones, gráficos de sonido, inspiración musical o ambientes sonoros.</p></div>
+      <div id="cont4" class="contenido"><p>Shorts, trailers, escenas renderizadas, o animaciones que integren el conjunto.</p></div>
+      <div id="cont5" class="contenido"><p>Notas personales, diarios visuales, grabaciones íntimas, o experiencias experimentales.</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Multifases. Proyecto vivo en continua mutación.</p>
+  </footer>
+
+  <script>
+    function mostrarFase(n) {
+      const total = 5;
+      const duracion = 0;
+
+      document.querySelectorAll('.descripcion.visible, .contenido.visible, #intro.visible').forEach(el => {
+        el.classList.remove('visible');
+      });
+      document.getElementById("intro-text").classList.remove("visible");
+
+      for (let i = 1; i <= total; i++) {
+        document.getElementById(`titulo${i}`).classList.remove("activa");
+      }
+
+      setTimeout(() => {
+        if (n === 0) {
+          document.getElementById("intro").classList.add("visible");
+          document.getElementById("intro-text").classList.add("visible");
+        } else {
+          document.getElementById(`desc${n}`).classList.add("visible");
+          document.getElementById(`cont${n}`).classList.add("visible");
+          document.getElementById(`titulo${n}`).classList.add("activa");
+        }
+      }, duracion);
+    }
+  </script>
+</body>
+</html>
