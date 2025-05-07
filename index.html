@@ -151,6 +151,22 @@
       border-left: 2px solid rgba(255,255,255,0.1);
       opacity: 0.8;
     }
+    .decorativo-bajo-titulo {
+  position: absolute;
+  top: 6.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 200px;
+  background-image: url('A_digital_artwork_displays_swirling,_ethereal_light.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
   </style>
 </head>
 <body>
@@ -161,6 +177,7 @@
   </audio>
   <header>
     <h1 onclick="mostrarFase(0)">Multifases</h1>
+    <div class="decorativo-bajo-titulo"></div>
     <p id="intro-text" class="visible">Una narrativa identitaria en transformación constante</p>
   </header>
 
