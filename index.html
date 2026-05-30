@@ -18,7 +18,6 @@
       flex-direction: column;
       min-height: 100vh;
       background-color: #0a0812; 
-      /* Corrección crítica para permitir scroll con mucho contenido */
       overflow-y: auto; 
     }
 
@@ -77,7 +76,6 @@
       border-right: 1px solid rgba(255,255,255,0.08);
       display: flex;
       flex-direction: column;
-      /* Alineación a la izquierda del menú */
       align-items: start;
       justify-content: start;
     }
@@ -100,7 +98,6 @@
       transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
       position: relative;
       letter-spacing: 0.02em;
-      /* Alineación de texto a la izquierda */
       text-align: left;
       width: 100%;
     }
@@ -133,12 +130,10 @@
       to   { opacity: 1; }
     }
 
-    /* Solución para expandir el texto y ocupar todo el espacio */
     .descripcion, .contenido {
       display: none;
       font-size: 1.15rem;
       line-height: 1.7;
-      /* Eliminación de anchos fijos y centrado */
       max-width: none; 
       width: 100%;
       text-align: justify;
@@ -229,7 +224,6 @@
 
     .descripcion p {
       background: rgba(10, 8, 18, 0.5);
-      /* Márgenes más chicos */
       padding: 1.2rem;
       border-radius: 8px;
       display: block;
@@ -237,11 +231,11 @@
       margin-bottom: 1rem;
     }
 
-    /* Estilos de la galería de portafolio */
+    /* Cambio a disposición vertical para imágenes panorámicas */
     .portfolio-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem; 
       margin-top: 1.5rem;
       width: 100%;
     }
@@ -249,15 +243,68 @@
     .portfolio-gallery img {
       width: 100%;
       height: auto;
-      border-radius: 6px;
+      border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(10, 8, 18, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
 
     .portfolio-gallery img:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(193, 138, 255, 0.2);
+      transform: scale(1.015);
+      box-shadow: 0 12px 32px rgba(193, 138, 255, 0.15);
+    }
+
+    /* Estilos del visor ampliado (Lightbox) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(6, 4, 10, 0.96);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.activo {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 92%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+      transform: scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lightbox.activo img {
+      transform: scale(1);
+    }
+
+    .lightbox .close-btn {
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      color: #F2F2F2;
+      font-size: 3.5rem;
+      font-weight: 200;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+      line-height: 1;
+    }
+
+    .lightbox .close-btn:hover {
+      color: #A695FF;
+      transform: scale(1.1);
     }
 
     /* Reglas de adaptación móvil */
@@ -266,6 +313,7 @@
       .menu { align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .fase-titulo { text-align: center; }
       #intro { padding: 4rem 1rem; }
+      .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
     }
   </style>
 </head>
@@ -307,8 +355,8 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         <p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p>
         
         <div class="portfolio-gallery">
-          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Marca%20Derecho%20a%20Soluciones%20(2).png" alt="Marca Derecho a Soluciones">
-          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Captura%20p%C3%A1gina%20web2.png" alt="Captura página web">
+          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Marca%20Derecho%20a%20Soluciones%20(2).png" alt="Marca Derecho a Soluciones" onclick="abrirVisor(this.src)">
+          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Captura%20p%C3%A1gina%20web2.png" alt="Captura página web" onclick="abrirVisor(this.src)">
         </div>
       </div>
       
@@ -317,6 +365,11 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       <div id="cont4" class="contenido"><p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p></div>
       <div id="cont5" class="contenido"><p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p></div>
     </div>
+  </div>
+
+  <div id="lightbox-visor" class="lightbox" onclick="cerrarVisor()">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Visualización ampliada">
   </div>
 
   <footer>
@@ -347,6 +400,19 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
           document.getElementById(`titulo${n}`).classList.add("activa");
         }
       }, duracion);
+    }
+
+    // Funciones del Visor de Imágenes
+    function abrirVisor(src) {
+      const lightbox = document.getElementById('lightbox-visor');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.classList.add('activo');
+    }
+
+    function cerrarVisor() {
+      const lightbox = document.getElementById('lightbox-visor');
+      lightbox.classList.remove('activo');
     }
   </script>
 </body>
