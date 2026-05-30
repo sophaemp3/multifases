@@ -151,15 +151,25 @@
       opacity: 0;
       text-align: center;
       margin: 0 auto;
-      /* Carga de la nueva imagen CURVAS2 detrás del texto */
-      background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/CURVAS2.png') no-repeat center center;
-      background-size: contain;
-      /* Ajuste de espacio para que el texto quede centrado en el dibujo */
+      position: relative;
       padding: 8rem 5rem;
       width: 100%;
       max-width: 900px;
       transform: translateY(10px);
       transition: opacity 0.5s ease, transform 1s ease;
+    }
+
+    #intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/CURVAS2.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.30;
+      z-index: -1;
     }
 
     #intro.visible {
@@ -168,7 +178,6 @@
       transform: translateY(0);
     }
 
-    /* Limpieza del fondo para el texto de introducción */
     #intro p {
       background: transparent;
       padding: 0;
