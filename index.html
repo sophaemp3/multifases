@@ -231,7 +231,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Cambio a disposición vertical para imágenes panorámicas */
     .portfolio-gallery {
       display: flex;
       flex-direction: column;
@@ -240,8 +239,10 @@
       width: 100%;
     }
 
+    /* Ajuste para que ocupe 2/3 de la pantalla y deje margen equilibrado */
     .portfolio-gallery img {
-      width: 100%;
+      width: 70%; 
+      margin: 0 auto; 
       height: auto;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -251,11 +252,11 @@
     }
 
     .portfolio-gallery img:hover {
-      transform: scale(1.015);
-      box-shadow: 0 12px 32px rgba(193, 138, 255, 0.15);
+      transform: scale(1.02);
+      box-shadow: 0 12px 32px rgba(193, 138, 255, 0.18);
     }
 
-    /* Estilos del visor ampliado (Lightbox) */
+    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -303,17 +304,22 @@
     }
 
     .lightbox .close-btn:hover {
-      color: #A695FF;
+      color: #C18AFF;
       transform: scale(1.1);
     }
 
-    /* Reglas de adaptación móvil */
+    /* Reglas móviles */
     @media (max-width: 768px) {
       .main-content { grid-template-columns: 1fr; }
       .menu { align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .fase-titulo { text-align: center; }
       #intro { padding: 4rem 1rem; }
       .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
+      
+      /* En móviles le damos todo el ancho para optimizar espacio */
+      .portfolio-gallery img {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -402,7 +408,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       }, duracion);
     }
 
-    // Funciones del Visor de Imágenes
     function abrirVisor(src) {
       const lightbox = document.getElementById('lightbox-visor');
       const lightboxImg = document.getElementById('lightbox-img');
