@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       caret-color: transparent;
       font-family: 'Syne', sans-serif;
@@ -14,64 +15,75 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background-color: #000;
+      /* Cambiado a un tono oscuro integrado con el diseño */
+      background-color: #0a0812; 
       overflow: hidden;
     }
-  .particles-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/2f3c45b8-60a1-462c-b1ad-9c11db064d6f.png') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  opacity: 1;
-}
+
+    .particles-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/2f3c45b8-60a1-462c-b1ad-9c11db064d6f.png') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      /* CORRECCIÓN: Subimos la opacidad del 0.35 al 0.80 para que se noten las telas e hilos */
+      opacity: 0.80; 
+    }
 
     audio { display: none; }
+    
     header, footer {
       padding: 2rem;
       text-align: center;
-      backdrop-filter: blur(4px);
+      /* CORRECCIÓN: Eliminado el blur que empañaba la imagen */
     }
+    
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
       cursor: pointer;
       transition: color 0.2s;
     }
+    
     header h1:hover {
       color: #C18AFF;
     }
+    
     header p {
       font-size: 1.2rem;
       opacity: 0.8;
     }
+    
     .main-content {
       display: grid;
       grid-template-columns: 1fr 2fr;
       flex: 1;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+    
     .menu {
       padding: 3rem 2rem;
-      border-right: 1px solid rgba(255,255,255,0.05);
+      border-right: 1px solid rgba(255,255,255,0.08);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      backdrop-filter: blur(6px);
+      /* CORRECCIÓN: Eliminado el blur de fondo */
     }
+    
     .display-area {
       padding: 3rem 2rem;
-      backdrop-filter: blur(4px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 2rem;
+      /* CORRECCIÓN: Eliminado el blur de fondo */
     }
+    
     .fase-titulo {
       font-size: 1.5rem;
       color: #A695FF;
@@ -80,10 +92,12 @@
       transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
       position: relative;
     }
+    
     .fase-titulo:hover {
       color: #C18AFF;
       transform: translateX(4px);
     }
+    
     .fase-titulo.activa {
       color: #FFFFFF;
       font-weight: bold;
@@ -91,13 +105,14 @@
       animation: glow 1.5s ease-in-out infinite alternate;
       text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80;
     }
+    
     @keyframes glow {
       from { text-shadow: 0 0 5px #ffffff40, 0 0 10px #C18AFF20; }
       to   { text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80; }
     }
 
     @keyframes slideInLeft {
-      from { : 0; transform: translateX(-40px); }
+      from { opacity: 0; transform: translateX(-40px); }
       to   { opacity: 1; transform: translateX(0); }
     }
 
@@ -126,13 +141,12 @@
 
     #intro {
       font-size: 1.2rem;
-      opacity: 0.7;
+      opacity: 0.9;
       max-width: 800px;
       text-align: center;
       margin: 0 auto;
       padding-top: 2rem;
       display: none;
-      opacity: 0;
       transform: translateY(10px);
       transition: opacity 1s ease, transform 1s ease;
     }
@@ -150,25 +164,17 @@
 
     .contenido {
       padding-left: 1rem;
-      border-left: 2px solid rgba(255,255,255,0.1);
-      opacity: 0.8;
+      border-left: 2px solid rgba(255,255,255,0.15);
+      opacity: 0.9;
     }
-    .decorativo-bajo-titulo {
-  position: absolute;
-  top: 6.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1200px;
-  height: 200px;
-  background-image: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/2f3c45b8-60a1-462c-b1ad-9c11db064d6f.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.25;
-  pointer-events: none;
-  z-index: 0;
-}
+
+    /* Opcional: Un contenedor sutil para asegurar lectura limpia sobre la textura */
+    .descripcion p {
+      background: rgba(10, 8, 18, 0.4);
+      padding: 1rem;
+      border-radius: 8px;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -177,9 +183,9 @@
     <source src="https://file-examples.com/storage/fe98002bfc2a02db3053e2d/2017/11/file_example_MP3_700KB.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
+  
   <header>
     <h1 onclick="mostrarFase(0)">Multifases</h1>
-    <div class="decorativo-bajo-titulo"></div>
     <p id="intro-text" class="visible">Una narrativa identitaria en transformación constante</p>
   </header>
 
@@ -194,7 +200,7 @@
 
     <div class="display-area">
       <div id="intro" class="descripcion visible">
-        <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrativo y expresivo de cada etapa del proyecto.</p>
+        <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrative y expresivo de cada etapa del proyecto.</p>
       </div>
 
       <div id="desc1" class="descripcion"><p>La imagen proyectada al mundo. Aquí comienza la metamorfosis visual de Multifases.</p></div>
