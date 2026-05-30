@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MULTIFASES</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,7 +18,8 @@
       flex-direction: column;
       min-height: 100vh;
       background-color: #0a0812; 
-      overflow: hidden;
+      /* Corrección crítica para permitir scroll con mucho contenido */
+      overflow-y: auto; 
     }
 
     .particles-bg {
@@ -76,14 +77,16 @@
       border-right: 1px solid rgba(255,255,255,0.08);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      /* Alineación a la izquierda del menú */
+      align-items: start;
+      justify-content: start;
     }
     
     .display-area {
       padding: 3rem 2rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: start;
       gap: 2rem;
     }
     
@@ -97,6 +100,9 @@
       transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
       position: relative;
       letter-spacing: 0.02em;
+      /* Alineación de texto a la izquierda */
+      text-align: left;
+      width: 100%;
     }
     
     .fase-titulo:hover {
@@ -127,11 +133,16 @@
       to   { opacity: 1; }
     }
 
+    /* Solución para expandir el texto y ocupar todo el espacio */
     .descripcion, .contenido {
       display: none;
       font-size: 1.15rem;
       line-height: 1.7;
-      max-width: 800px;
+      /* Eliminación de anchos fijos y centrado */
+      max-width: none; 
+      width: 100%;
+      text-align: justify;
+      hyphens: auto;
       opacity: 0;
     }
 
@@ -193,7 +204,7 @@
 
     @keyframes fadeInCurves {
       from { opacity: 0; transform: scale(0.95); }
-      to   { opacity: 0.20; transform: scale(1); }
+      to   { opacity: 0.30; transform: scale(1); }
     }
 
     @keyframes fadeInIntroText {
@@ -218,72 +229,12 @@
 
     .descripcion p {
       background: rgba(10, 8, 18, 0.5);
+      /* Márgenes más chicos */
       padding: 1.2rem;
       border-radius: 8px;
-      display: inline-block;
-    }
-
-    /* ==========================================
-       ADAPTACIÓN PARA CELULARES (MEDIA QUERY)
-       ========================================== */
-    @media (max-width: 768px) {
-      body {
-        overflow-y: auto; /* Permite scroll vertical si el contenido excede la pantalla */
-      }
-
-      header {
-        padding: 1.5rem 1rem;
-      }
-
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      header p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-
-      .main-content {
-        grid-template-columns: 1fr; /* Cambia de 2 columnas horizontales a 1 columna vertical */
-      }
-
-      .menu {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        padding: 1.5rem 1rem;
-        flex-direction: row; /* Coloca las fases una al lado de la otra */
-        flex-wrap: wrap; /* Las baja de línea si no entran */
-        justify-content: center;
-        gap: 0.8rem;
-      }
-
-      .fase-titulo {
-        font-size: 0.85rem !important;
-        margin-bottom: 0; /* Quita el espacio vertical de escritorio */
-        letter-spacing: 0.01em;
-      }
-
-      .fase-titulo.activa {
-        font-size: 0.9rem !important;
-      }
-
-      .display-area {
-        padding: 2rem 1rem;
-      }
-
-      #intro {
-        padding: 4rem 1rem; /* Reduce el colchón interno de CURVAS2 para no empujar el texto */
-      }
-
-      #intro p, .descripcion p, .contenido p {
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-
-      footer {
-        padding: 1.5rem 1rem;
-      }
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
@@ -296,13 +247,13 @@
   
   <header>
     <h1 onclick="mostrarFase(0)">MULTIFASES</h1>
-    <p id="intro-text" class="visible">Un recorrido a través de la transformación.</p>
+    <p id="intro-text" class="visible">Diseño, animación y transformación visual. El recorrido donde la idea se convierte en materia, movimiento y atmósfera.</p>
   </header>
 
   <div class="main-content">
     <div class="menu">
       <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: ATUENDO</div>
-      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: DANZA</div>
+      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: GESTO</div>
       <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: ATMÓSFERA</div>
       <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: ALQUIMIA</div>
       <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: BITÁCORA</div>
@@ -310,8 +261,9 @@
 
     <div class="display-area">
       <div id="intro" class="visible">
-        <p>No es una disciplina aislada. En Multifases cada proyecto profundiza todas las capas.
-Desde la apariencia se llega al núcleo de la identidad misma. El cliente puede ingresar en una fase específica o recorrer el camino completo.</p>
+        <p>No creemos en las disciplinas aisladas. En Multifases se aborda cada proyecto profundizando todas sus capas.
+
+Confeccionando desde la superficie se puede llegar al núcleo de la identidad misma. El cliente puede ingresar en una fase específica o recorrer el camino completo.</p>
       </div>
 
       <div id="desc1" class="descripcion"><p>Identidad visual, diseño gráfico, branding, dirección de arte, fotografía editorial.</p></div>
@@ -329,7 +281,7 @@ Desde la apariencia se llega al núcleo de la identidad misma. El cliente puede 
   </div>
 
   <footer>
-    <p>© 2026 Multifases. Proyecto vivo.</p>
+    <p>© 2026 Multifases. Proyecto vivo en continua mutación.</p>
   </footer>
 
   <script>
