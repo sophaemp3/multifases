@@ -148,15 +148,12 @@
 
     #intro {
       display: none;
-      opacity: 0;
       text-align: center;
       margin: 0 auto;
       position: relative;
       padding: 8rem 5rem;
       width: 100%;
       max-width: 900px;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease, transform 1s ease;
     }
 
     #intro::before {
@@ -168,22 +165,39 @@
       bottom: 0;
       background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/CURVAS2.png') no-repeat center center;
       background-size: contain;
-      opacity: 0.30;
+      opacity: 0;
       z-index: -1;
-    }
-
-    #intro.visible {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
     }
 
     #intro p {
       background: transparent;
       padding: 0;
       font-size: 1.15rem;
-      opacity: 0.95;
+      opacity: 0;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    #intro.visible {
+      display: block;
+    }
+
+    #intro.visible::before {
+      animation: fadeInCurves 1.4s ease-out forwards;
+    }
+
+    #intro.visible p {
+      animation: fadeInIntroText 1.2s ease-out forwards;
+      animation-delay: 0.7s;
+    }
+
+    @keyframes fadeInCurves {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 0.30; transform: scale(1); }
+    }
+
+    @keyframes fadeInIntroText {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 0.95; transform: translateY(0); }
     }
 
     footer p {
@@ -231,7 +245,7 @@
     </div>
 
     <div class="display-area">
-      <div id="intro" class="descripcion visible">
+      <div id="intro" class="visible">
         <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrativo y expresivo de cada etapa del proyecto.</p>
       </div>
 
@@ -250,7 +264,7 @@
   </div>
 
   <footer>
-    <p>© Multifases. Proyecto vivo en continua mutación.</p>
+    <p>© 2026 Multifases. Proyecto vivo en continua mutación.</p>
   </footer>
 
   <script>
