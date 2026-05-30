@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MULTIFASES</title>
+  <title>Multifases</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500&family=Unbounded:wght@400;500;700&display=swap" rel="stylesheet">
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       caret-color: transparent;
-      /* 'Inter' por defecto para asegurar la máxima legibilidad de lectura en todo el sitio */
       font-family: 'Inter', sans-serif;
       color: #F2F2F2;
       display: flex;
@@ -43,11 +42,10 @@
     }
     
     header h1 {
-      /* Cambio a Fraunces para un look artístico y editorial */
       font-family: 'Fraunces', serif;
       font-weight: 700;
-      font-size: 3rem; /* Subí un pelín el tamaño para lucir los detalles de la fuente */
-      margin-bottom: 0.5rem;
+      font-size: 3.2rem;
+      margin-bottom: 0.8rem;
       cursor: pointer;
       transition: color 0.2s;
       letter-spacing: -0.02em;
@@ -58,24 +56,23 @@
     }
     
     header p {
-      /* Space Grotesk para el subtítulo principal */
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
       opacity: 0.8;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
     
     .main-content {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1.21fr 2fr;
       flex: 1;
       border-top: 1px solid rgba(255,255,255,0.08);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     
     .menu {
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
       border-right: 1px solid rgba(255,255,255,0.08);
       display: flex;
       flex-direction: column;
@@ -83,7 +80,7 @@
     }
     
     .display-area {
-      padding: 3rem 2rem;
+      padding: 3rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -91,27 +88,27 @@
     }
     
     .fase-titulo {
-      /* Space Grotesk para los botones/fases de navegación */
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 500;
-      font-size: 1.4rem;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 400;
+      font-size: 1.15rem;
       color: #A695FF;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       cursor: pointer;
       transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
       position: relative;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
     }
     
     .fase-titulo:hover {
       color: #C18AFF;
-      transform: translateX(4px);
+      transform: translateX(6px);
     }
     
     .fase-titulo.activa {
       color: #FFFFFF;
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       animation: glow 1.5s ease-in-out infinite alternate;
       text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80;
     }
@@ -133,7 +130,6 @@
 
     .descripcion, .contenido {
       display: none;
-      /* Hereda 'Inter' automáticamente para una lectura perfecta y fluida */
       font-size: 1.15rem;
       line-height: 1.7;
       max-width: 800px;
@@ -169,10 +165,10 @@
     }
 
     footer p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      opacity: 0.6;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+      opacity: 0.5;
     }
 
     .contenido {
@@ -197,7 +193,7 @@
   </audio>
   
   <header>
-    <h1 onclick="mostrarFase(0)">MULTIFASES</h1>
+    <h1 onclick="mostrarFase(0)">Multifases</h1>
     <p id="intro-text" class="visible">Una narrativa identitaria en transformación constante</p>
   </header>
 
@@ -206,7 +202,7 @@
       <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: El Disfraz</div>
       <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: El Movimiento</div>
       <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: La Banda Sonora</div>
-      <div class="fase-titulo" id="titulo4" onclick="always_block_or_execute(4); mostrarFase(4)">FASE 4: La Síntesis</div>
+      <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: La Síntesis</div>
       <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: Lo Íntimo</div>
     </div>
 
@@ -258,7 +254,6 @@
         }
       }, duracion);
     }
-    function always_block_or_execute(n){}
   </script>
 </body>
 </html>
