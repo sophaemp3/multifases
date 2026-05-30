@@ -236,6 +236,37 @@
       width: 100%;
       margin-bottom: 1rem;
     }
+
+    /* Estilos de la galería de portafolio */
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+
+    .portfolio-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 8, 18, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio-gallery img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(193, 138, 255, 0.2);
+    }
+
+    /* Reglas de adaptación móvil */
+    @media (max-width: 768px) {
+      .main-content { grid-template-columns: 1fr; }
+      .menu { align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .fase-titulo { text-align: center; }
+      #intro { padding: 4rem 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -272,7 +303,15 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       <div id="desc4" class="descripcion"><p>Producción de cortometrajes, trailers, proyectos integrales</p></div>
       <div id="desc5" class="descripcion"><p>Bocetos, making of, experimentos personales, diario visual.</p></div>
 
-      <div id="cont1" class="contenido"><p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p></div>
+      <div id="cont1" class="contenido">
+        <p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p>
+        
+        <div class="portfolio-gallery">
+          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Marca%20Derecho%20a%20Soluciones%20(2).png" alt="Marca Derecho a Soluciones">
+          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Captura%20p%C3%A1gina%20web.png" alt="Captura página web">
+        </div>
+      </div>
+      
       <div id="cont2" class="contenido"><p>La imagen puesta en marcha. Contenido, ritmo y dinamismo que transforman el diseño en piezas cinemáticas.</p></div>
       <div id="cont3" class="contenido"><p>La dimensión invisible de una idea. Frecuencias, ritmo y paisajes sonoros que envuelven la imagen y construyen el tono emocional.</p></div>
       <div id="cont4" class="contenido"><p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p></div>
