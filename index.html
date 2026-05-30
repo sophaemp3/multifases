@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Multifases</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       caret-color: transparent;
-      font-family: 'Syne', sans-serif;
+      /* 'Inter' por defecto para asegurar la máxima legibilidad de lectura en todo el sitio */
+      font-family: 'Inter', sans-serif;
       color: #F2F2F2;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      /* Cambiado a un tono oscuro integrado con el diseño */
       background-color: #0a0812; 
       overflow: hidden;
     }
@@ -30,7 +32,6 @@
       background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/2f3c45b8-60a1-462c-b1ad-9c11db064d6f.png') no-repeat center center;
       background-size: cover;
       background-attachment: fixed;
-      /* CORRECCIÓN: Subimos la opacidad del 0.35 al 0.80 para que se noten las telas e hilos */
       opacity: 0.80; 
     }
 
@@ -39,14 +40,17 @@
     header, footer {
       padding: 2rem;
       text-align: center;
-      /* CORRECCIÓN: Eliminado el blur que empañaba la imagen */
     }
     
     header h1 {
-      font-size: 2.5rem;
+      /* Cambio a Fraunces para un look artístico y editorial */
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 3rem; /* Subí un pelín el tamaño para lucir los detalles de la fuente */
       margin-bottom: 0.5rem;
       cursor: pointer;
       transition: color 0.2s;
+      letter-spacing: -0.02em;
     }
     
     header h1:hover {
@@ -54,8 +58,12 @@
     }
     
     header p {
-      font-size: 1.2rem;
+      /* Space Grotesk para el subtítulo principal */
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
       opacity: 0.8;
+      letter-spacing: 0.05em;
     }
     
     .main-content {
@@ -72,7 +80,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      /* CORRECCIÓN: Eliminado el blur de fondo */
     }
     
     .display-area {
@@ -81,16 +88,19 @@
       flex-direction: column;
       justify-content: center;
       gap: 2rem;
-      /* CORRECCIÓN: Eliminado el blur de fondo */
     }
     
     .fase-titulo {
-      font-size: 1.5rem;
+      /* Space Grotesk para los botones/fases de navegación */
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 1.4rem;
       color: #A695FF;
       margin-bottom: 1.5rem;
       cursor: pointer;
       transition: transform 0.2s, color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
       position: relative;
+      letter-spacing: 0.02em;
     }
     
     .fase-titulo:hover {
@@ -100,8 +110,8 @@
     
     .fase-titulo.activa {
       color: #FFFFFF;
-      font-weight: bold;
-      font-size: 1.7rem;
+      font-weight: 700;
+      font-size: 1.6rem;
       animation: glow 1.5s ease-in-out infinite alternate;
       text-shadow: 0 0 10px #ffffffa0, 0 0 20px #C18AFF80;
     }
@@ -123,8 +133,9 @@
 
     .descripcion, .contenido {
       display: none;
-      font-size: 1.2rem;
-      line-height: 1.6;
+      /* Hereda 'Inter' automáticamente para una lectura perfecta y fluida */
+      font-size: 1.15rem;
+      line-height: 1.7;
       max-width: 800px;
       opacity: 0;
     }
@@ -140,7 +151,7 @@
     }
 
     #intro {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       opacity: 0.9;
       max-width: 800px;
       text-align: center;
@@ -158,20 +169,21 @@
     }
 
     footer p {
-      font-size: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
       opacity: 0.6;
     }
 
     .contenido {
       padding-left: 1rem;
       border-left: 2px solid rgba(255,255,255,0.15);
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
-    /* Opcional: Un contenedor sutil para asegurar lectura limpia sobre la textura */
     .descripcion p {
-      background: rgba(10, 8, 18, 0.4);
-      padding: 1rem;
+      background: rgba(10, 8, 18, 0.5);
+      padding: 1.2rem;
       border-radius: 8px;
       display: inline-block;
     }
@@ -194,13 +206,13 @@
       <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: El Disfraz</div>
       <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: El Movimiento</div>
       <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: La Banda Sonora</div>
-      <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: La Síntesis</div>
+      <div class="fase-titulo" id="titulo4" onclick="always_block_or_execute(4); mostrarFase(4)">FASE 4: La Síntesis</div>
       <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: Lo Íntimo</div>
     </div>
 
     <div class="display-area">
       <div id="intro" class="descripcion visible">
-        <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrative y expresivo de cada etapa del proyecto.</p>
+        <p>Explorá cada una de las fases que componen el universo de Multifases. Hacé clic en el panel izquierdo para desplegar el contenido identitario, narrativo y expresivo de cada etapa del proyecto.</p>
       </div>
 
       <div id="desc1" class="descripcion"><p>La imagen proyectada al mundo. Aquí comienza la metamorfosis visual de Multifases.</p></div>
@@ -218,7 +230,7 @@
   </div>
 
   <footer>
-    <p>© 2025 Multifases. Proyecto vivo en continua mutación.</p>
+    <p>© 2026 Multifases. Proyecto vivo en continua mutación.</p>
   </footer>
 
   <script>
@@ -246,6 +258,7 @@
         }
       }, duracion);
     }
+    function always_block_or_execute(n){}
   </script>
 </body>
 </html>
