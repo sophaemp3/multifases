@@ -147,38 +147,26 @@
     }
 
     .contenido.visible {
-      document.getElementById("intro-text").classList.remove("visible");
       display: block;
       animation: fadeIn 1s ease-in forwards;
     }
 
+    /* Rediseño limpio del Intro sin las curvas de fondo */
     #intro {
       display: none;
       text-align: center;
       margin: 0 auto;
       position: relative;
-      padding: 8rem 5rem;
+      padding: 6rem 2rem;
       width: 100%;
       max-width: 900px;
-    }
-
-    #intro::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/CURVAS2.png') no-repeat center center;
-      background-size: contain;
-      opacity: 0;
-      z-index: -1;
     }
 
     #intro p {
       background: transparent;
       padding: 0;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
+      line-height: 1.8;
       opacity: 0;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       text-align: justify;
@@ -188,18 +176,9 @@
       display: block;
     }
 
-    #intro.visible::before {
-      animation: fadeInCurves 1.4s ease-out forwards;
-    }
-
     #intro.visible p {
       animation: fadeInIntroText 1.2s ease-out forwards;
-      animation-delay: 0.7s;
-    }
-
-    @keyframes fadeInCurves {
-      from { opacity: 0; transform: scale(0.95); }
-      to   { opacity: 0.30; transform: scale(1); }
+      animation-delay: 0.2s;
     }
 
     @keyframes fadeInIntroText {
@@ -239,7 +218,6 @@
       width: 100%;
     }
 
-    /* Estilos estéticos unificados para imágenes, videos locales e iframes de YouTube */
     .portfolio-gallery img, 
     .portfolio-gallery video,
     .portfolio-gallery iframe {
@@ -269,6 +247,65 @@
 
     .video-celu {
       display: none !important;
+    }
+
+    /* Estilos estéticos para la Tarjeta de descarga de PDF */
+    .pdf-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: rgba(193, 138, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.5rem;
+      border-radius: 8px;
+      width: 70%;
+      margin: 1.5rem auto 0 auto;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pdf-card:hover {
+      border-color: rgba(193, 138, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(193, 138, 255, 0.08);
+    }
+
+    .pdf-icon {
+      font-size: 2.5rem;
+    }
+
+    .pdf-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .pdf-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      color: #FFFFFF;
+      margin-bottom: 0.2rem;
+    }
+
+    .pdf-info p {
+      font-size: 0.95rem !important;
+      opacity: 0.6;
+      background: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .pdf-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      color: #0a0812;
+      background: #A695FF;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .pdf-btn:hover {
+      background: #C18AFF;
+      transform: translateY(-2px);
     }
 
     /* Lightbox */
@@ -328,7 +365,7 @@
       .main-content { grid-template-columns: 1fr; }
       .menu { align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .fase-titulo { text-align: center; }
-      #intro { padding: 4rem 1rem; }
+      #intro { padding: 3rem 1rem; }
       .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
       
       .portfolio-gallery img, 
@@ -339,6 +376,13 @@
 
       .video-pc { display: none !important; }
       .video-celu { display: block !important; width: 100% !important; }
+
+      .pdf-card {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+      }
+      .pdf-info { text-align: center; }
     }
   </style>
 </head>
@@ -412,7 +456,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         </div>
       </div>
       
-      <!-- FASE 4 con tu video de tesis de YouTube integrado -->
       <div id="cont4" class="contenido">
         <p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p>
         
@@ -421,7 +464,21 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         </div>
       </div>
       
-      <div id="cont5" class="contenido"><p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p></div>
+      <!-- FASE 5 con la tarjeta de descarga de tu TFG integrada -->
+      <div id="cont5" class="contenido">
+        <p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p>
+        
+        <div class="pdf-card">
+          <div class="pdf-icon">📄</div>
+          <div class="pdf-info">
+            <h3>TFG — Diseño y Animación Digital</h3>
+            <p>Trabajo de Fin de Grado completo de Micaela S. Scebba García.</p>
+          </div>
+          <a href="https://raw.githubusercontent.com/sophaemp3/multifases/main/TFG%20-%20Dise%C3%B1o%20y%20Animacion%20digital%20-%20Micaela%20S.%20Scebba%20Garcia%20-%20Micaela%20Sof%C3%ADa%20Scebba%20(1)_compressed%20(1).pdf" target="_blank" class="pdf-btn">
+            Ver Tesis
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
