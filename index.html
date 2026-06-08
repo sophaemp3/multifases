@@ -239,7 +239,6 @@
       width: 100%;
     }
 
-    /* Aplicamos los mismos márgenes y escala tanto a imágenes como a videos */
     .portfolio-gallery img, .portfolio-gallery video {
       width: 70%; 
       margin: 0 auto; 
@@ -257,6 +256,11 @@
     .portfolio-gallery img:hover, .portfolio-gallery video:hover {
       transform: scale(1.02);
       box-shadow: 0 12px 32px rgba(193, 138, 255, 0.18);
+    }
+
+    /* Ocultar el video vertical por defecto en pantallas de computadora */
+    .video-celu {
+      display: none !important;
     }
 
     /* Lightbox */
@@ -319,8 +323,17 @@
       #intro { padding: 4rem 1rem; }
       .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
       
-      .portfolio-gallery img, .portfolio-gallery video {
+      .portfolio-gallery img {
         width: 100%;
+      }
+
+      /* Intercambio inteligente de videos en pantallas táctiles/celulares */
+      .video-pc {
+        display: none !important;
+      }
+      .video-celu {
+        display: block !important;
+        width: 100% !important;
       }
     }
   </style>
@@ -373,8 +386,13 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         <p>La imagen puesta en marcha. Contenido, ritmo y dinamismo que transforman el diseño en piezas cinemáticas.</p>
         
         <div class="portfolio-gallery">
-          <video controls>
+          <video controls class="video-pc">
             <source src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Reel%20horizontal%20de%20Idecor.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+
+          <video controls class="video-celu">
+            <source src="https://raw.githubusercontent.com/sophaemp3/multifases/main/Reel%20vertical%20de%20Idecor%20720.mp4" type="video/mp4">
             Tu navegador no soporta el elemento de video.
           </video>
         </div>
@@ -417,6 +435,9 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
           document.getElementById(`desc${n}`).classList.add("visible");
           document.getElementById(`cont${n}`).classList.add("visible");
           document.getElementById(`titulo${n}`).classList.add("activa");
+          
+          // Pausar videos si el usuario cambia de fase para evitar ruidos de fondo
+          document.querySelectorAll('video').forEach(video => video.pause());
         }
       }, duracion);
     }
