@@ -239,18 +239,22 @@
       width: 100%;
     }
 
-    .portfolio-gallery img {
+    /* Aplicamos los mismos márgenes y escala tanto a imágenes como a videos */
+    .portfolio-gallery img, .portfolio-gallery video {
       width: 70%; 
       margin: 0 auto; 
       height: auto;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(10, 8, 18, 0.3);
-      cursor: pointer;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
 
-    .portfolio-gallery img:hover {
+    .portfolio-gallery img {
+      cursor: pointer;
+    }
+
+    .portfolio-gallery img:hover, .portfolio-gallery video:hover {
       transform: scale(1.02);
       box-shadow: 0 12px 32px rgba(193, 138, 255, 0.18);
     }
@@ -315,7 +319,7 @@
       #intro { padding: 4rem 1rem; }
       .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
       
-      .portfolio-gallery img {
+      .portfolio-gallery img, .portfolio-gallery video {
         width: 100%;
       }
     }
@@ -360,12 +364,22 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         
         <div class="portfolio-gallery">
           <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Marca%20Derecho%20a%20Soluciones%20(2).png" alt="Marca Derecho a Soluciones" onclick="abrirVisor(this.src)">
+          <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Redes%20sociales.png" alt="Redes Sociales" onclick="abrirVisor(this.src)">
           <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Captura%20p%C3%A1gina%20web2.png" alt="Captura página web" onclick="abrirVisor(this.src)">
-            <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Redes%20sociales.png" alt="Redes Sociales" onclick="abrirVisor(this.src)">
         </div>
       </div>
       
-      <div id="cont2" class="contenido"><p>La imagen puesta en marcha. Contenido, ritmo y dinamismo que transforman el diseño en piezas cinemáticas.</p></div>
+      <div id="cont2" class="contenido">
+        <p>La imagen puesta en marcha. Contenido, ritmo y dinamismo que transforman el diseño en piezas cinemáticas.</p>
+        
+        <div class="portfolio-gallery">
+          <video controls>
+            <source src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Reel%20horizontal%20de%20Idecor.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+      
       <div id="cont3" class="contenido"><p>La dimensión invisible de una idea. Frecuencias, ritmo y paisajes sonoros que envuelven la imagen y construyen el tono emocional.</p></div>
       <div id="cont4" class="contenido"><p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p></div>
       <div id="cont5" class="contenido"><p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p></div>
