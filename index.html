@@ -151,7 +151,6 @@
       animation: fadeIn 1s ease-in forwards;
     }
 
-    /* Rediseño limpio del Intro sin las curvas de fondo */
     #intro {
       display: none;
       text-align: center;
@@ -218,6 +217,7 @@
       width: 100%;
     }
 
+    /* Estilos estéticos unificados para el contenido multimedia */
     .portfolio-gallery img, 
     .portfolio-gallery video,
     .portfolio-gallery iframe {
@@ -234,6 +234,12 @@
       aspect-ratio: 16 / 9;
     }
 
+    /* Regla exclusiva para el visor de PDF (formato vertical y scroll interno cómodo) */
+    .portfolio-gallery .pdf-frame {
+      aspect-ratio: auto;
+      height: 80vh; 
+    }
+
     .portfolio-gallery img {
       cursor: pointer;
     }
@@ -247,65 +253,6 @@
 
     .video-celu {
       display: none !important;
-    }
-
-    /* Estilos estéticos para la Tarjeta de descarga de PDF */
-    .pdf-card {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      background: rgba(193, 138, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 1.5rem;
-      border-radius: 8px;
-      width: 70%;
-      margin: 1.5rem auto 0 auto;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pdf-card:hover {
-      border-color: rgba(193, 138, 255, 0.3);
-      box-shadow: 0 8px 24px rgba(193, 138, 255, 0.08);
-    }
-
-    .pdf-icon {
-      font-size: 2.5rem;
-    }
-
-    .pdf-info {
-      flex: 1;
-      text-align: left;
-    }
-
-    .pdf-info h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
-      color: #FFFFFF;
-      margin-bottom: 0.2rem;
-    }
-
-    .pdf-info p {
-      font-size: 0.95rem !important;
-      opacity: 0.6;
-      background: transparent !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    .pdf-btn {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 500;
-      text-decoration: none;
-      color: #0a0812;
-      background: #A695FF;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .pdf-btn:hover {
-      background: #C18AFF;
-      transform: translateY(-2px);
     }
 
     /* Lightbox */
@@ -374,15 +321,12 @@
         width: 100%;
       }
 
+      .portfolio-gallery .pdf-frame {
+        height: 65vh; /* Ajuste de altura en celu para no romper la navegación */
+      }
+
       .video-pc { display: none !important; }
       .video-celu { display: block !important; width: 100% !important; }
-
-      .pdf-card {
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-      }
-      .pdf-info { text-align: center; }
     }
   </style>
 </head>
@@ -464,19 +408,12 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         </div>
       </div>
       
-      <!-- FASE 5 con la tarjeta de descarga de tu TFG integrada -->
+      <!-- FASE 5 con visor interactivo de PDF directo en la página -->
       <div id="cont5" class="contenido">
         <p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p>
         
-        <div class="pdf-card">
-          <div class="pdf-icon">📄</div>
-          <div class="pdf-info">
-            <h3>TFG — Diseño y Animación Digital</h3>
-            <p>Trabajo de Fin de Grado completo de Micaela S. Scebba García.</p>
-          </div>
-          <a href="https://raw.githubusercontent.com/sophaemp3/multifases/main/TFG%20-%20Dise%C3%B1o%20y%20Animacion%20digital%20-%20Micaela%20S.%20Scebba%20Garcia%20-%20Micaela%20Sof%C3%ADa%20Scebba%20(1)_compressed%20(1).pdf" target="_blank" class="pdf-btn">
-            Ver Tesis
-          </a>
+        <div class="portfolio-gallery">
+          <iframe class="pdf-frame" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/sophaemp3/multifases/main/TFG%20-%20Dise%C3%B1o%20y%20Animacion%20digital%20-%20Micaela%20S.%20Scebba%20Garcia%20-%20Micaela%20Sof%C3%ADa%20Scebba%20(1)_compressed%20(1).pdf&embedded=true" frameborder="0"></iframe>
         </div>
       </div>
     </div>
