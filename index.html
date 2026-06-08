@@ -239,7 +239,10 @@
       width: 100%;
     }
 
-    .portfolio-gallery img, .portfolio-gallery video {
+    /* Estilos unificados para imágenes, videos locales e iframes de YouTube */
+    .portfolio-gallery img, 
+    .portfolio-gallery video,
+    .portfolio-gallery iframe {
       width: 70%; 
       margin: 0 auto; 
       height: auto;
@@ -249,16 +252,22 @@
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     }
 
+    /* Mantiene la proporción horizontal perfecta de YouTube */
+    .portfolio-gallery iframe {
+      aspect-ratio: 16 / 9;
+    }
+
     .portfolio-gallery img {
       cursor: pointer;
     }
 
-    .portfolio-gallery img:hover, .portfolio-gallery video:hover {
+    .portfolio-gallery img:hover, 
+    .portfolio-gallery video:hover,
+    .portfolio-gallery iframe:hover {
       transform: scale(1.02);
       box-shadow: 0 12px 32px rgba(193, 138, 255, 0.18);
     }
 
-    /* Ocultar el video vertical por defecto en pantallas de computadora */
     .video-celu {
       display: none !important;
     }
@@ -323,18 +332,14 @@
       #intro { padding: 4rem 1rem; }
       .lightbox .close-btn { top: 1.5rem; right: 2rem; font-size: 2.8rem; }
       
-      .portfolio-gallery img {
+      .portfolio-gallery img, 
+      .portfolio-gallery video,
+      .portfolio-gallery iframe {
         width: 100%;
       }
 
-      /* Intercambio inteligente de videos en pantallas táctiles/celulares */
-      .video-pc {
-        display: none !important;
-      }
-      .video-celu {
-        display: block !important;
-        width: 100% !important;
-      }
+      .video-pc { display: none !important; }
+      .video-celu { display: block !important; width: 100% !important; }
     }
   </style>
 </head>
@@ -353,8 +358,8 @@
   <div class="main-content">
     <div class="menu">
       <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: ATUENDO</div>
-      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: DANZA</div>
-      <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: MÚSICA</div>
+      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: GESTO</div>
+      <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: ATMÓSFERA</div>
       <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: ALQUIMIA</div>
       <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: BITÁCORA</div>
     </div>
@@ -398,7 +403,17 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         </div>
       </div>
       
-      <div id="cont3" class="contenido"><p>La dimensión invisible de una idea. Frecuencias, ritmo y paisajes sonoros que envuelven la imagen y construyen el tono emocional.</p></div>
+      <!-- FASE 3 con tus videos musicales de YouTube integrados -->
+      <div id="cont3" class="contenido">
+        <p>La dimensión invisible de una idea. Frecuencias, ritmo y paisajes sonoros que envuelven la imagen y construyen el tono emocional.</p>
+        
+        <div class="portfolio-gallery">
+          <iframe src="https://www.youtube.com/embed/wpSM0XuzT20" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/On_VqkhpFmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/ApMl3iQ-mho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      
       <div id="cont4" class="contenido"><p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p></div>
       <div id="cont5" class="contenido"><p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p></div>
     </div>
@@ -436,7 +451,7 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
           document.getElementById(`cont${n}`).classList.add("visible");
           document.getElementById(`titulo${n}`).classList.add("activa");
           
-          // Pausar videos si el usuario cambia de fase para evitar ruidos de fondo
+          // Pausar videos locales si se cambia de fase
           document.querySelectorAll('video').forEach(video => video.pause());
         }
       }, duracion);
