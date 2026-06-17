@@ -10,7 +10,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    body {
+body {
       caret-color: transparent;
       font-family: 'Inter', sans-serif;
       color: #F2F2F2;
@@ -18,7 +18,8 @@
       flex-direction: column;
       min-height: 100vh;
       background-color: #0a0812; 
-      overflow-y: auto; 
+      overflow-y: scroll; /* Obliga a la barra vertical a estar siempre */
+      overflow-x: hidden; /* Previene scroll horizontal accidental */
     }
 
     .particles-bg {
