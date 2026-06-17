@@ -10,7 +10,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
-body {
+    body {
       caret-color: transparent;
       font-family: 'Inter', sans-serif;
       color: #F2F2F2;
@@ -18,8 +18,8 @@ body {
       flex-direction: column;
       min-height: 100vh;
       background-color: #0a0812; 
-      overflow-y: scroll; /* Obliga a la barra vertical a estar siempre */
-      overflow-x: hidden; /* Previene scroll horizontal accidental */
+      overflow-y: scroll; /* Fix para que el fondo no salte */
+      overflow-x: hidden; 
     }
 
     .particles-bg {
@@ -218,7 +218,6 @@ body {
       width: 100%;
     }
 
-    /* Estilos estéticos unificados para el contenido multimedia */
     .portfolio-gallery img, 
     .portfolio-gallery video,
     .portfolio-gallery iframe {
@@ -235,7 +234,6 @@ body {
       aspect-ratio: 16 / 9;
     }
 
-    /* Regla exclusiva para el visor de PDF */
     .portfolio-gallery .pdf-frame {
       aspect-ratio: auto;
       height: 80vh; 
@@ -256,7 +254,6 @@ body {
       display: none !important;
     }
 
-    /* Lightbox */
     .lightbox {
       display: none;
       position: fixed;
@@ -308,7 +305,7 @@ body {
       transform: scale(1.1);
     }
 
-    /* Estilos para las carpetas */
+    /* Estilos para las carpetas ajustados */
     .folder-grid {
       display: flex;
       gap: 2rem;
@@ -322,7 +319,7 @@ body {
       align-items: center;
       cursor: pointer;
       transition: transform 0.3s ease;
-      width: 140px;
+      width: 200px; /* Aumentado para que el texto encaje bien con la carpeta grande */
       text-align: center;
     }
     
@@ -331,7 +328,7 @@ body {
     }
     
     .folder-container img { 
-      width: 100px; 
+      width: 160px; /* Aumentado desde 100px */
       height: auto; 
       border: none;
       background: transparent;
@@ -346,7 +343,7 @@ body {
     .folder-container p { 
       margin-top: 0.8rem; 
       font-family: 'Space Grotesk', sans-serif; 
-      font-size: 1rem; 
+      font-size: 1.1rem; /* Un poco más grande para acompañar la imagen */
       color: #F2F2F2;
     }
 
@@ -371,7 +368,6 @@ body {
       color: #C18AFF;
     }
 
-    /* Reglas móviles */
     @media (max-width: 768px) {
       .main-content { grid-template-columns: 1fr; }
       .menu { align-items: center; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -381,17 +377,11 @@ body {
       
       .portfolio-gallery img, 
       .portfolio-gallery video,
-      .portfolio-gallery iframe {
-        width: 100%;
-      }
+      .portfolio-gallery iframe { width: 100%; }
 
-      .portfolio-gallery .pdf-frame {
-        height: 65vh; 
-      }
-
+      .portfolio-gallery .pdf-frame { height: 65vh; }
       .video-pc { display: none !important; }
       .video-celu { display: block !important; width: 100% !important; }
-      
       .folder-grid { justify-content: center; }
     }
   </style>
@@ -423,12 +413,13 @@ body {
 Confeccionando desde la superficie se puede llegar al núcleo de la identidad misma. El cliente puede ingresar en una fase específica o recorrer el camino completo.</p>
       </div>
 
-      <div id="desc1" class="descripcion"><p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p></div>
+      <div id="desc1" class="descripcion"><p>Branding, asesoría de imagen, diseño de marca, fotografía, etc.</p></div>
       <div id="desc2" class="descripcion"><p>Animación 2D y 3D, motion graphics, publicidad, video, etc.</p></div>
       <div id="desc3" class="descripcion"><p>Audiovisual, videos con música, producciones armadas estilo cortometraje o largometraje comprendiendo todas las áreas de la producción cinematográfica actual.</p></div>
       <div id="desc4" class="descripcion"><p>Breakdowns, detrás del proceso, etc.</p></div>
 
       <div id="cont1" class="contenido">
+        <p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p>
         
         <div id="carpetas-atuendo" class="folder-grid">
           <div class="folder-container" onclick="abrirProyecto('proyecto-derecho', 'carpetas-atuendo')">
@@ -512,10 +503,8 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         document.getElementById(`cont${n}`).classList.add("visible");
         document.getElementById(`titulo${n}`).classList.add("activa");
         
-        // Pausar videos locales si se cambia de fase
         document.querySelectorAll('video').forEach(video => video.pause());
         
-        // Resetear vistas de carpetas al cambiar de fase
         if(n === 1) {
             cerrarProyecto('proyecto-derecho', 'carpetas-atuendo');
         }
