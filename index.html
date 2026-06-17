@@ -12,13 +12,13 @@
     
     body {
       caret-color: transparent;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
       color: #F2F2F2;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       background-color: #0a0812; 
-      overflow-y: scroll; /* Fix para que el fondo no salte */
+      overflow-y: scroll; 
       overflow-x: hidden; 
     }
 
@@ -133,6 +133,9 @@
 
     .descripcion, .contenido {
       display: none;
+      font-family: 'Space Grotesk', sans-serif; 
+      font-weight: 500;
+      letter-spacing: 0.02em;
       font-size: 1.15rem;
       line-height: 1.7;
       max-width: none; 
@@ -163,6 +166,8 @@
     }
 
     #intro p {
+      font-family: 'Space Grotesk', sans-serif; 
+      font-weight: 500;
       background: transparent;
       padding: 0;
       font-size: 1.25rem;
@@ -305,7 +310,6 @@
       transform: scale(1.1);
     }
 
-    /* Estilos para las carpetas ajustados */
     .folder-grid {
       display: flex;
       gap: 2rem;
@@ -319,7 +323,7 @@
       align-items: center;
       cursor: pointer;
       transition: transform 0.3s ease;
-      width: 200px; /* Aumentado para que el texto encaje bien con la carpeta grande */
+      width: 200px; 
       text-align: center;
     }
     
@@ -328,7 +332,7 @@
     }
     
     .folder-container img { 
-      width: 160px; /* Aumentado desde 100px */
+      width: 160px; 
       height: auto; 
       border: none;
       background: transparent;
@@ -343,7 +347,7 @@
     .folder-container p { 
       margin-top: 0.8rem; 
       font-family: 'Space Grotesk', sans-serif; 
-      font-size: 1.1rem; /* Un poco más grande para acompañar la imagen */
+      font-size: 1.1rem; 
       color: #F2F2F2;
     }
 
@@ -419,7 +423,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       <div id="desc4" class="descripcion"><p>Breakdowns, detrás del proceso, etc.</p></div>
 
       <div id="cont1" class="contenido">
-        
         <div id="carpetas-atuendo" class="folder-grid">
           <div class="folder-container" onclick="abrirProyecto('proyecto-derecho', 'carpetas-atuendo')">
             <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Carpeta%20blanca.png" alt="Carpeta">
@@ -429,7 +432,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
 
         <div id="proyecto-derecho" class="project-content">
           <div class="back-btn" onclick="cerrarProyecto('proyecto-derecho', 'carpetas-atuendo')">← Volver a carpetas</div>
-          
           <div class="portfolio-gallery">
             <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Marca%20Derecho%20a%20Soluciones%20(2).png" alt="Marca Derecho a Soluciones" onclick="abrirVisor(this.src)">
             <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Redes%20sociales.png" alt="Redes Sociales" onclick="abrirVisor(this.src)">
@@ -439,34 +441,69 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       </div>
       
       <div id="cont2" class="contenido">
-        <p>La imagen puesta en marcha. Contenido, ritmo y dinamismo que transforman el diseño en piezas cinemáticas.</p>
-        
-        <div class="portfolio-gallery">
-          <video controls class="video-pc">
-            <source src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Reel%20horizontal%20de%20Idecor.mp4" type="video/mp4">
-            Tu navegador no soporta el elemento de video.
-          </video>
+        <div id="carpetas-danza" class="folder-grid">
+          <div class="folder-container" onclick="abrirProyecto('proyecto-idecor', 'carpetas-danza')">
+            <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Carpeta%20blanca.png" alt="Carpeta">
+            <p>IDECOR</p>
+          </div>
+        </div>
 
-          <video controls class="video-celu">
-            <source src="https://raw.githubusercontent.com/sophaemp3/multifases/main/Reel%20vertical%20de%20Idecor%20720.mp4" type="video/mp4">
-            Tu navegador no soporta el elemento de video.
-          </video>
+        <div id="proyecto-idecor" class="project-content">
+          <div class="back-btn" onclick="cerrarProyecto('proyecto-idecor', 'carpetas-danza')">← Volver a carpetas</div>
+          <div class="portfolio-gallery">
+            <video controls class="video-pc">
+              <source src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Reel%20horizontal%20de%20Idecor.mp4" type="video/mp4">
+              Tu navegador no soporta el elemento de video.
+            </video>
+            <video controls class="video-celu">
+              <source src="https://raw.githubusercontent.com/sophaemp3/multifases/main/Reel%20vertical%20de%20Idecor%20720.mp4" type="video/mp4">
+              Tu navegador no soporta el elemento de video.
+            </video>
+          </div>
         </div>
       </div>
       
       <div id="cont3" class="contenido">
-        <p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p>
-        
-        <div class="portfolio-gallery">
-          <iframe src="https://www.youtube.com/embed/x-41hViVdcY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div id="carpetas-alquimia" class="folder-grid">
+          <div class="folder-container" onclick="abrirProyecto('proyecto-tfg', 'carpetas-alquimia')">
+            <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Carpeta%20blanca.png" alt="Carpeta">
+            <p>Trabajo final de grado en Animación</p>
+          </div>
+          <div class="folder-container" onclick="abrirProyecto('proyecto-sophae', 'carpetas-alquimia')">
+            <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Carpeta%20blanca.png" alt="Carpeta">
+            <p>SOPHAE</p>
+          </div>
+        </div>
+
+        <div id="proyecto-tfg" class="project-content">
+          <div class="back-btn" onclick="cerrarProyecto('proyecto-tfg', 'carpetas-alquimia')">← Volver a carpetas</div>
+          <div class="portfolio-gallery">
+            <iframe src="https://www.youtube.com/embed/x-41hViVdcY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div id="proyecto-sophae" class="project-content">
+          <div class="back-btn" onclick="cerrarProyecto('proyecto-sophae', 'carpetas-alquimia')">← Volver a carpetas</div>
+          <div class="portfolio-gallery">
+            <iframe src="https://www.youtube.com/embed/TU_LINK_DE_YOUTUBE_AQUI_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/TU_LINK_DE_YOUTUBE_AQUI_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
       
       <div id="cont4" class="contenido">
-        <p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p>
-        
-        <div class="portfolio-gallery">
-          <iframe class="pdf-frame" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/sophaemp3/multifases/main/TFG%20-%20Dise%C3%B1o%20y%20Animacion%20digital%20-%20Micaela%20S.%20Scebba%20Garcia%20-%20Micaela%20Sof%C3%ADa%20Scebba%20(1)_compressed%20(1).pdf&embedded=true" frameborder="0"></iframe>
+        <div id="carpetas-bitacora" class="folder-grid">
+          <div class="folder-container" onclick="abrirProyecto('proyecto-doc', 'carpetas-bitacora')">
+            <img src="https://raw.githubusercontent.com/sophaemp3/multifases/refs/heads/main/Carpeta%20blanca.png" alt="Carpeta">
+            <p>Documentación de Trabajo final</p>
+          </div>
+        </div>
+
+        <div id="proyecto-doc" class="project-content">
+          <div class="back-btn" onclick="cerrarProyecto('proyecto-doc', 'carpetas-bitacora')">← Volver a carpetas</div>
+          <div class="portfolio-gallery">
+            <iframe class="pdf-frame" src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/sophaemp3/multifases/main/TFG%20-%20Dise%C3%B1o%20y%20Animacion%20digital%20-%20Micaela%20S.%20Scebba%20Garcia%20-%20Micaela%20Sof%C3%ADa%20Scebba%20(1)_compressed%20(1).pdf&embedded=true" frameborder="0"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -494,6 +531,10 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         document.getElementById(`titulo${i}`).classList.remove("activa");
       }
 
+      // Cerrar todos los proyectos abiertos y mostrar las carpetas al cambiar de fase
+      document.querySelectorAll('.folder-grid').forEach(el => el.style.display = 'flex');
+      document.querySelectorAll('.project-content').forEach(el => el.style.display = 'none');
+
       if (n === 0) {
         document.getElementById("intro").classList.add("visible");
         document.getElementById("intro-text").classList.add("visible");
@@ -503,10 +544,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         document.getElementById(`titulo${n}`).classList.add("activa");
         
         document.querySelectorAll('video').forEach(video => video.pause());
-        
-        if(n === 1) {
-            cerrarProyecto('proyecto-derecho', 'carpetas-atuendo');
-        }
       }
     }
 
