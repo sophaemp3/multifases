@@ -345,10 +345,9 @@
   <div class="main-content">
     <div class="menu">
       <div class="fase-titulo" id="titulo1" onclick="mostrarFase(1)">FASE 1: ATUENDO</div>
-      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: GESTO</div>
-      <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: ATMÓSFERA</div>
-      <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: ALQUIMIA</div>
-      <div class="fase-titulo" id="titulo5" onclick="mostrarFase(5)">FASE 5: BITÁCORA</div>
+      <div class="fase-titulo" id="titulo2" onclick="mostrarFase(2)">FASE 2: DANZA</div>
+      <div class="fase-titulo" id="titulo3" onclick="mostrarFase(3)">FASE 3: ALQUIMIA</div>
+      <div class="fase-titulo" id="titulo4" onclick="mostrarFase(4)">FASE 4: BITÁCORA</div>
     </div>
 
     <div class="display-area">
@@ -358,11 +357,10 @@
 Confeccionando desde la superficie se puede llegar al núcleo de la identidad misma. El cliente puede ingresar en una fase específica o recorrer el camino completo.</p>
       </div>
 
-      <div id="desc1" class="descripcion"><p>Identidad visual, diseño gráfico, branding, dirección de arte, fotografía editorial.</p></div>
-      <div id="desc2" class="descripcion"><p>Animación, reels, edición, video breve, motion graphics.</p></div>
-      <div id="desc3" class="descripcion"><p>Identidad sonora, música original, ambientes, edición de audio.</p></div>
-      <div id="desc4" class="descripcion"><p>Producción de cortometrajes, trailers, proyectos integrales</p></div>
-      <div id="desc5" class="descripcion"><p>Bocetos, making of, experimentos personales, diario visual.</p></div>
+      <div id="desc1" class="descripcion"><p>Branding, asesoría de imagen, diseño de marca, fotografía, etc.</p></div>
+      <div id="desc2" class="descripcion"><p>Animación 2D y 3D, motion graphics, publicidad, video, etc.</p></div>
+      <div id="desc3" class="descripcion"><p>Audiovisual, videos con música, producciones armadas estilo cortometraje o largometraje comprendiendo todas las áreas de la producción cinematográfica actual.</p></div>
+      <div id="desc4" class="descripcion"><p>Breakdowns, detrás del proceso, etc.</p></div>
 
       <div id="cont1" class="contenido">
         <p>La primera capa de la identidad. El diseño exterior, la estructura y la composición visual que construyen una presencia sólida en el mundo.</p>
@@ -391,16 +389,6 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
       </div>
       
       <div id="cont3" class="contenido">
-        <p>La dimensión invisible de una idea. Frecuencias, ritmo y paisajes sonoros que envuelven la imagen y construyen el tono emocional.</p>
-        
-        <div class="portfolio-gallery">
-          <iframe src="https://www.youtube.com/embed/wpSM0XuzT20" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <iframe src="https://www.youtube.com/embed/On_VqkhpFmI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <iframe src="https://www.youtube.com/embed/ApMl3iQ-mho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-      
-      <div id="cont4" class="contenido">
         <p>El punto de convergencia. Donde el diseño, el movimiento y la atmósfera se unen en piezas audiovisuales completas, escenas 3D y relatos de gran formato.</p>
         
         <div class="portfolio-gallery">
@@ -408,8 +396,7 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
         </div>
       </div>
       
-      <!-- FASE 5 con visor interactivo de PDF directo en la página -->
-      <div id="cont5" class="contenido">
+      <div id="cont4" class="contenido">
         <p>El reverso del proceso. Notas, ensayos y exploraciones experimentales que revelan el detrás del oficio.</p>
         
         <div class="portfolio-gallery">
@@ -430,7 +417,7 @@ Confeccionando desde la superficie se puede llegar al núcleo de la identidad mi
 
   <script>
     function mostrarFase(n) {
-      const total = 5;
+      const total = 4;
       const duracion = 0;
 
       document.querySelectorAll('.descripcion.visible, .contenido.visible, #intro.visible').forEach(el => {
